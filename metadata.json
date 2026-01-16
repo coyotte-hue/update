@@ -128,9 +128,8 @@
         {"code": "SP73", "category": "Kits", "name": "Modern Retreat Kit", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/SP73/Sims4_DLC_SP73_Modern_Retreat_Kit.zip"},
         {"code": "SP74", "category": "Kits", "name": "Garden to Table Kit", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/SP74/Sims4_DLC_SP74_Garden_to_Table_Kit.zip"},
         {"code": "SP81", "category": "Kits", "name": "Prairie Dreams Kit", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/SP81/SP81.zip"},
-        {"code": "FP01", "category": "Packs Fêtes", "name": "Holiday Celebration Pack", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/FP01/Sims4_DLC_FP01_Holiday_Celebration_Pack.zip"}
-        {"code": "SP81", "category": "Kits", "name": "Prairie Dreams Kit", "url": "https://github.com/coyotte-hue/update/releases/download/SP81/SP81.zip"},
         
         {"code": "FP01", "category": "Free Packs", "name": "Holiday Celebration Pack", "url": "https://github.com/coyotte-hue/update/releases/download/FP01/Sims4_DLC_FP01_Holiday_Celebration_Pack.zip"}
     ]
 }
+
