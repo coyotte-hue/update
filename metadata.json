@@ -5,10 +5,12 @@
         {
             "version": "1.120.140.1020",
             "type": "zip",
-            "url": "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)_Update.zip",
-            'url": "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)_Update.z02",
-            "url": "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z01"
-            "description": "Mise à jour complète vers 1.120.140.1020"
+            "url": [
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z01?download=true",
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z02?download=true",
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Update.zip?download=true"
+            ],
+            "description": "Mise à jour complète vers 1.120.140.1020 (multipart ZIP: z01, z02, zip)"
         },
         {
             "version": "1.120.140.1020",
@@ -18,7 +20,7 @@
                 "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part2.rar?download=true",
                 "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part3.rar?download=true"
             ],
-            "description": "Mise à jour vers 1.120.140.1020 (multi-part RAR). Nécessite 7-Zip installé."
+            "description": "Mise à jour vers 1.120.140.1020 (multi-part RAR)."
         }
     ],
     "dlcs": [
@@ -130,13 +132,11 @@
         {"code": "SP73", "category": "Kits", "name": "Modern Retreat Kit", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/SP73/Sims4_DLC_SP73_Modern_Retreat_Kit.zip"},
         {"code": "SP74", "category": "Kits", "name": "Garden to Table Kit", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/SP74/Sims4_DLC_SP74_Garden_to_Table_Kit.zip"},
         {"code": "SP81", "category": "Kits", "name": "Prairie Dreams Kit", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/SP81/SP81.zip"},
-        {"code": "FP01", "category": "Packs Fêtes", "name": "Holiday Celebration Pack", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/FP01/Sims4_DLC_FP01_Holiday_Celebration_Pack.zip"},
+        {"code": "FP01", "category": "Packs Fêtes", "name": "Holiday Celebration Pack", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/FP01/Sims4_DLC_FP01_Holiday_Celebration_Pack.zip"}
 
         
-        {
     ]
 }
-
 
 
 
