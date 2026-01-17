@@ -7,7 +7,7 @@
             "type": "zip",
             "url": "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)_Update.zip",
             'url": "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)_Update.z02",
-            "url": "https://huggingface.co/datasets/Vinz-i/update/blob/main
+            "url": "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z01"
             "description": "Mise à jour complète vers 1.120.140.1020"
         },
         {
@@ -136,6 +136,7 @@
         {
     ]
 }
+
 
 
 
