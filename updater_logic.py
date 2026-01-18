@@ -797,14 +797,16 @@ class GameInfo:
 
                 log(f"Downloading part {i}/{len(resolved_urls)}...", "orange")
 
-                # Create progress bar for this download
-                progress_bar = ProgressBar(expected_size or total_size, f"Part {i}: {filename}")
+                # Simple progress: just track bytes
+                downloaded = {'bytes': 0}
                 
                 def progress_cb(done, file_total):
-                    progress_bar.update(done - progress_bar.downloaded)
+                    mb = done / 1e6
+                    if downloaded['bytes'] != done:
+                        downloaded['bytes'] = done
+                        log(f"Part {i}: {mb:.1f}MB downloaded", "blue")
 
                 result = self.download_file(full_url, dest, progress_cb)
-                progress_bar.finish()
                 
                 if result is not True:
                     return (False, f"Download error for part {i}: {result}")
