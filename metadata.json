@@ -6,9 +6,9 @@
             "version": "1.120.140.1020",
             "type": "zip",
             "url": [
-                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z01?download=true",
-                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z02?download=true",
-                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Update.zip?download=true"
+                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z01",
+                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z02",
+                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Update.zip"
             ],
             "description": "Mise à jour complète vers 1.120.140.1020 (multipart ZIP: z01, z02, zip)"
         },
@@ -16,16 +16,16 @@
             "version": "1.120.140.1020",
             "type": "zip",
             "url": [
-                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part1.rar?download=true",
-                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part2.rar?download=true",
-                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part3.rar?download=true"
+                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part1.rar",
+                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part2.rar",
+                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part3.rar"
             ],
             "description": "Mise à jour vers 1.120.140.1020 (multi-part RAR)."
         },
         {
             "version": "1.120.117.1030",
             "type": "patch",
-            "url": "https://github.com/coyotte-hue/update/releases/download/patch/Patch.1.120.117.1030.from.1.119.109.1020.3.patch",
+            "url": "https://raw.githubusercontent.com/coyotte-hue/update/main/hashes/1.120.117.1030.json",
             "description": "Patch différentiel de 1.119.109.1020 vers 1.120.117.1030"
         }
     ],
@@ -143,6 +143,7 @@
         
     ]
 }
+
 
 
 
