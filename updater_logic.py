@@ -673,29 +673,81 @@ class GameInfo:
             urls = patch_info.get("url", [])
             if isinstance(urls, str):
                 urls = [urls]
-            
+
             base_url = self.manifest.get("base_url", "").rstrip('/')
-            
+
+            # Compute total size (best effort) for progress display
+            def head_content_length(u: str):
+                try:
+                    req = urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0'}, method='HEAD')
+                    with urllib.request.urlopen(req, timeout=10) as resp:
+                        length = resp.info().get('Content-Length')
+                        return int(length) if length else None
+                except Exception:
+                    return None
+
+            resolved_urls = []
+            total_size = 0
+            sizes = []
+            for url in urls:
+                if not url.startswith('http'):
+                    resolved = f"{base_url}/{url}"
+                else:
+                    resolved = url
+                resolved_urls.append(resolved)
+                size = head_content_length(resolved)
+                sizes.append(size)
+                if size:
+                    total_size += size
+
+            downloaded_total = 0
             downloaded_files = []
             rar_like = False
-            for i, url in enumerate(urls, 1):
-                # Construct full URL if relative
-                if not url.startswith('http'):
-                    full_url = f"{base_url}/{url}"
-                else:
-                    full_url = url
+            for i, full_url in enumerate(resolved_urls, 1):
+                expected_size = sizes[i-1] if i-1 < len(sizes) else None
 
-                # Preserve original filename (important for multi-part .rar)
+                # Preserve original filename (important for multi-part .rar/.z01)
                 parsed = urlparse(full_url)
                 filename = os.path.basename(parsed.path)
                 if not filename:
                     filename = f"patch_part{i}"
                 dest = os.path.join(downloading_dir, filename)
 
-                log(f"Downloading part {i}/{len(urls)}...", "orange")
-                result = self.download_file(full_url, dest, lambda d, t: None)
+                log(f"Downloading part {i}/{len(resolved_urls)}...", "orange")
+
+                # Progress callback with global percentage
+                last_report = {'bytes': 0}
+                def progress_cb(done, file_total):
+                    nonlocal downloaded_total
+                    current = downloaded_total + done
+                    if total_size:
+                        percent = (current / total_size) * 100
+                        # Throttle logs: every ~5 MB or on completion
+                        if current - last_report['bytes'] < 5 * 1024 * 1024 and current < total_size:
+                            return
+                        last_report['bytes'] = current
+                        log(f"Progress: {percent:.1f}% ({current/1e6:.1f} MB / {total_size/1e6:.1f} MB)", "blue")
+                    else:
+                        # Fallback when total size unknown
+                        if current - last_report['bytes'] < 5 * 1024 * 1024 and file_total:
+                            return
+                        last_report['bytes'] = current
+                        if file_total:
+                            file_percent = (done / file_total) * 100
+                            log(f"Part {i}: {file_percent:.1f}% ({done/1e6:.1f} MB)", "blue")
+                        else:
+                            log(f"Part {i}: {done/1e6:.1f} MB", "blue")
+
+                result = self.download_file(full_url, dest, progress_cb)
                 if result is not True:
                     return (False, f"Download error for part {i}: {result}")
+
+                # Update counters after successful download
+                try:
+                    actual_size = os.path.getsize(dest)
+                except OSError:
+                    actual_size = expected_size or 0
+                downloaded_total += actual_size
 
                 downloaded_files.append(dest)
                 lower_name = filename.lower()
