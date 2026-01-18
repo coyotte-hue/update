@@ -8,6 +8,7 @@ import shutil
 import tempfile
 import hashlib
 import sys
+import time
 
 # Import patcher module if available
 try:
@@ -19,6 +20,78 @@ try:
 except ImportError:
     PATCHER_AVAILABLE = False
     patcher = None
+
+class ProgressBar:
+    """Simple progress bar for console display."""
+    def __init__(self, total_size, filename=""):
+        self.total_size = total_size
+        self.filename = filename[:30].ljust(30) if filename else "Download"
+        self.downloaded = 0
+        self.start_time = time.time()
+        self.last_update = 0
+    
+    def update(self, chunk_size):
+        """Update progress and display bar."""
+        self.downloaded += chunk_size
+        now = time.time()
+        
+        # Throttle display updates (every 0.1 seconds)
+        if now - self.last_update < 0.1 and self.downloaded < self.total_size:
+            return
+        
+        self.last_update = now
+        
+        # Calculate metrics
+        percent = (self.downloaded / self.total_size) * 100 if self.total_size else 0
+        bar_length = 20
+        filled = int(bar_length * self.downloaded / self.total_size) if self.total_size else 0
+        bar = '█' * filled + '░' * (bar_length - filled)
+        
+        # Calculate speed and ETA
+        elapsed = now - self.start_time
+        speed = self.downloaded / elapsed if elapsed > 0 else 0
+        remaining = self.total_size - self.downloaded if self.total_size else 0
+        eta_seconds = remaining / speed if speed > 0 else 0
+        eta_str = self._format_time(eta_seconds)
+        
+        # Format display
+        mb_downloaded = self.downloaded / 1e6
+        mb_total = self.total_size / 1e6 if self.total_size else 0
+        speed_str = self._format_speed(speed)
+        
+        display = f"\r[{bar}] {percent:5.1f}% | {mb_downloaded:6.1f}MB / {mb_total:6.1f}MB | {speed_str} | ETA: {eta_str}  "
+        sys.stdout.write(display)
+        sys.stdout.flush()
+    
+    def finish(self):
+        """Display completion."""
+        elapsed = time.time() - self.start_time
+        speed = self._format_speed(self.downloaded / elapsed if elapsed > 0 else 0)
+        sys.stdout.write(f"\r[{'█' * 20}] 100.0% | {self.downloaded/1e6:6.1f}MB | Avg: {speed} | Done in {self._format_time(elapsed)}  \n")
+        sys.stdout.flush()
+    
+    @staticmethod
+    def _format_speed(speed):
+        """Format bytes/sec to human readable."""
+        for unit, divisor in [("MB/s", 1e6), ("KB/s", 1e3)]:
+            if speed >= divisor:
+                return f"{speed/divisor:.1f}{unit}"
+        return f"{speed:.0f}B/s"
+    
+    @staticmethod
+    def _format_time(seconds):
+        """Format seconds to HH:MM:SS."""
+        if seconds < 0:
+            return "0s"
+        h = int(seconds // 3600)
+        m = int((seconds % 3600) // 60)
+        s = int(seconds % 60)
+        if h > 0:
+            return f"{h}h{m}m"
+        elif m > 0:
+            return f"{m}m{s}s"
+        else:
+            return f"{s}s"
 
 class GameInfo:
     def __init__(self, metadata_path="metadata.json", metadata_url=None):
@@ -715,30 +788,15 @@ class GameInfo:
 
                 log(f"Downloading part {i}/{len(resolved_urls)}...", "orange")
 
-                # Progress callback with global percentage
-                last_report = {'bytes': 0}
+                # Create progress bar for this download
+                progress_bar = ProgressBar(expected_size or total_size, f"Part {i}: {filename}")
+                
                 def progress_cb(done, file_total):
-                    nonlocal downloaded_total
-                    current = downloaded_total + done
-                    if total_size:
-                        percent = (current / total_size) * 100
-                        # Throttle logs: every ~5 MB or on completion
-                        if current - last_report['bytes'] < 5 * 1024 * 1024 and current < total_size:
-                            return
-                        last_report['bytes'] = current
-                        log(f"Progress: {percent:.1f}% ({current/1e6:.1f} MB / {total_size/1e6:.1f} MB)", "blue")
-                    else:
-                        # Fallback when total size unknown
-                        if current - last_report['bytes'] < 5 * 1024 * 1024 and file_total:
-                            return
-                        last_report['bytes'] = current
-                        if file_total:
-                            file_percent = (done / file_total) * 100
-                            log(f"Part {i}: {file_percent:.1f}% ({done/1e6:.1f} MB)", "blue")
-                        else:
-                            log(f"Part {i}: {done/1e6:.1f} MB", "blue")
+                    progress_bar.update(done - progress_bar.downloaded)
 
                 result = self.download_file(full_url, dest, progress_cb)
+                progress_bar.finish()
+                
                 if result is not True:
                     return (False, f"Download error for part {i}: {result}")
 
