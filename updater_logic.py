@@ -809,7 +809,11 @@ class GameInfo:
 
                 downloaded_files.append(dest)
                 lower_name = filename.lower()
-                if lower_name.endswith(('.rar', '.7z', '.z01', '.z02')) or '.part' in lower_name:
+                # Support multipart formats: .rar, .7z, .z01, .z02, .001, .002, .003, etc
+                is_multipart = (lower_name.endswith(('.rar', '.7z', '.z01', '.z02')) 
+                               or '.part' in lower_name 
+                               or any(lower_name.endswith(f'.{i:03d}') for i in range(1, 999)))
+                if is_multipart:
                     rar_like = True
 
             # Step 2: Extract downloaded archives
@@ -823,13 +827,16 @@ class GameInfo:
                 first_part = None
                 for f in downloaded_files:
                     name = os.path.basename(f).lower()
-                    if name.endswith('.part1.rar') or name.endswith('.001') or name.endswith('.z01'):
+                    # Check for various first part formats
+                    if (name.endswith('.part1.rar') or name.endswith('.001') or name.endswith('.z01')
+                        or name.endswith('.zip') and any(os.path.basename(x).lower().endswith('.002') for x in downloaded_files)):
                         first_part = f
                         break
                 if not first_part:
-                    # fallback: pick a .rar or .7z or .z01
+                    # fallback: pick a .rar, .7z, .z01, .001, or .zip
                     for f in downloaded_files:
-                        if f.lower().endswith(('.rar', '.7z', '.z01')):
+                        lower = f.lower()
+                        if lower.endswith(('.rar', '.7z', '.z01', '.001', '.zip')):
                             first_part = f
                             break
                 if not first_part:
