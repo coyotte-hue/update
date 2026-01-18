@@ -6,9 +6,9 @@
             "version": "1.120.140.1020",
             "type": "zip",
             "url": [
-                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z01",
-                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z02",
-                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Update.zip"
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z01?download=true",
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Update.z02?download=true",
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Update.zip?download=true"
             ],
             "description": "Mise à jour complète vers 1.120.140.1020 (multipart ZIP: z01, z02, zip)"
         },
@@ -16,9 +16,9 @@
             "version": "1.120.140.1020",
             "type": "zip",
             "url": [
-                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part1.rar",
-                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part2.rar",
-                "https://huggingface.co/datasets/Vinz-i/update/blob/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part3.rar"
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part1.rar?download=true",
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part2.rar?download=true",
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.part3.rar?download=true"
             ],
             "description": "Mise à jour vers 1.120.140.1020 (multi-part RAR)."
         },
@@ -32,10 +32,10 @@
     "dlcs": [
         {"code": "EP01", "category": "Packs Extension", "name": "Get to Work", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/EP01/Sims4_DLC_EP01_Get_to_Work.zip"},
         {"code": "EP02", "category": "Packs Extension", "name": "Get Together", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/EP02/Sims4_DLC_EP02_Get_Together.zip"},
-        {"code": "EP03", "category": "Packs Extension", "name": "City Living", "url": "https://huggingface.co/datasets/Vinz-i/update/blob/main/Sims4_DLC_EP03_City_Living.zip"},
+        {"code": "EP03", "category": "Packs Extension", "name": "City Living", "url": "https://huggingface.co/datasets/Vinz-i/update/resolve/main/Sims4_DLC_EP03_City_Living.zip?download=true"},
         {"code": "EP04", "category": "Packs Extension", "name": "Cats and Dogs", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/EP04/Sims4_DLC_EP04_Cats_and_Dogs.zip"},
         {"code": "EP05", "category": "Packs Extension", "name": "Seasons", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/EP05/Sims4_DLC_EP05_Seasons.zip"},
-        {"code": "EP06", "category": "Packs Extension", "name": "Get Famous", "url": "https://huggingface.co/datasets/Vinz-i/update/blob/main/Sims4_DLC_EP06_Get_Famous.zip"},
+        {"code": "EP06", "category": "Packs Extension", "name": "Get Famous", "url": "https://huggingface.co/datasets/Vinz-i/update/resolve/main/Sims4_DLC_EP06_Get_Famous.zip?download=true"},
         {"code": "EP07", "category": "Packs Extension", "name": "Island Living", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/EP07/Sims4_DLC_EP07_Island_Living.zip"},
         {"code": "EP08", "category": "Packs Extension", "name": "Discover University", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/EP08/Sims4_DLC_EP08_Discover_University.zip"},
         {"code": "EP09", "category": "Packs Extension", "name": "Eco Lifestyle", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/EP09/Sims4_DLC_EP09_Eco_Lifestyle.zip"},
