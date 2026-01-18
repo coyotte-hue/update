@@ -25,7 +25,7 @@
         {
             "version": "1.120.117.1030",
             "type": "patch",
-            "url": "https://huggingface.co/datasets/Vinz-i/update/resolve/main/Patch%201.120.117.1030%20from%201.119.109.1020%203.patch?download=true",
+            "url": "https://github.com/coyotte-hue/update/releases/download/patch/Patch.1.120.117.1030.from.1.119.109.1020.3.patch",
             "description": "Patch différentiel de 1.119.109.1020 vers 1.120.117.1030"
         }
     ],
@@ -143,6 +143,7 @@
         
     ]
 }
+
 
 
 
