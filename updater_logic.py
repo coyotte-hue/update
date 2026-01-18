@@ -41,34 +41,43 @@ class ProgressBar:
         
         self.last_update = now
         
-        # Calculate metrics
-        percent = (self.downloaded / self.total_size) * 100 if self.total_size else 0
-        bar_length = 20
-        filled = int(bar_length * self.downloaded / self.total_size) if self.total_size else 0
-        bar = '█' * filled + '░' * (bar_length - filled)
-        
-        # Calculate speed and ETA
-        elapsed = now - self.start_time
-        speed = self.downloaded / elapsed if elapsed > 0 else 0
-        remaining = self.total_size - self.downloaded if self.total_size else 0
-        eta_seconds = remaining / speed if speed > 0 else 0
-        eta_str = self._format_time(eta_seconds)
-        
-        # Format display
-        mb_downloaded = self.downloaded / 1e6
-        mb_total = self.total_size / 1e6 if self.total_size else 0
-        speed_str = self._format_speed(speed)
-        
-        display = f"\r[{bar}] {percent:5.1f}% | {mb_downloaded:6.1f}MB / {mb_total:6.1f}MB | {speed_str} | ETA: {eta_str}  "
-        sys.stdout.write(display)
-        sys.stdout.flush()
+        try:
+            # Calculate metrics
+            percent = (self.downloaded / self.total_size) * 100 if self.total_size else 0
+            bar_length = 20
+            filled = int(bar_length * self.downloaded / self.total_size) if self.total_size else 0
+            bar = '█' * filled + '░' * (bar_length - filled)
+            
+            # Calculate speed and ETA
+            elapsed = now - self.start_time
+            speed = self.downloaded / elapsed if elapsed > 0 else 0
+            remaining = self.total_size - self.downloaded if self.total_size else 0
+            eta_seconds = remaining / speed if speed > 0 else 0
+            eta_str = self._format_time(eta_seconds)
+            
+            # Format display
+            mb_downloaded = self.downloaded / 1e6
+            mb_total = self.total_size / 1e6 if self.total_size else 0
+            speed_str = self._format_speed(speed)
+            
+            display = f"\r[{bar}] {percent:5.1f}% | {mb_downloaded:6.1f}MB / {mb_total:6.1f}MB | {speed_str} | ETA: {eta_str}  "
+            if sys.stdout:
+                sys.stdout.write(display)
+                sys.stdout.flush()
+        except Exception:
+            # Silent fail if stdout is not available
+            pass
     
     def finish(self):
         """Display completion."""
-        elapsed = time.time() - self.start_time
-        speed = self._format_speed(self.downloaded / elapsed if elapsed > 0 else 0)
-        sys.stdout.write(f"\r[{'█' * 20}] 100.0% | {self.downloaded/1e6:6.1f}MB | Avg: {speed} | Done in {self._format_time(elapsed)}  \n")
-        sys.stdout.flush()
+        try:
+            elapsed = time.time() - self.start_time
+            speed = self._format_speed(self.downloaded / elapsed if elapsed > 0 else 0)
+            if sys.stdout:
+                sys.stdout.write(f"\r[{'█' * 20}] 100.0% | {self.downloaded/1e6:6.1f}MB | Avg: {speed} | Done in {self._format_time(elapsed)}  \n")
+                sys.stdout.flush()
+        except Exception:
+            pass
     
     @staticmethod
     def _format_speed(speed):
