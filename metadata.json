@@ -6,11 +6,11 @@
             "version": "1.120.140.1020",
             "type": "zip",
             "url": [
-                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/_Update.z01?download=true",
-                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/_Update.z02?download=true",
-                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/_Update.zip?download=true"
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.zip.001?download=true",
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.zip.002?download=true",
+                "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20(v1.120.140.1020)%20Patch%20Update.zip.003?download=true"
             ],
-            "description": "Mise à jour complète vers 1.120.140.1020 (multipart ZIP: z01, z02, zip)"
+            "description": "Mise à jour complète vers 1.120.140.1020 (multipart ZIP: .001, .002, .003)"
         },
         {
             "version": "1.120.117.1030",
