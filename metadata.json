@@ -1,19 +1,29 @@
 {
-    "base_url": "https://huggingface.co/datasets/Vinz-i/update/resolve/main",
-    "latest_version": "1.120.140.1020",
-{
+  "base_url": "https://huggingface.co/datasets/Vinz-i/update/resolve/main",
+  "latest_version": "1.120.140.1020",
   "patches": [
     {
       "version_from": "1.120.117.1030",
       "version_to": "1.120.140.1020",
-      "filename": "The Sims 4 Patch 1.120.140.1020 from 1.120.117.1030.patch",
+      "filename": "patch_temp_final.patch",
       "description": "Mise à jour de 1.120.117 vers 1.120.140",
-      "download_url": "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.patch?download=true",
+      "download_url": [
+        "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.zip.001?download=true",
+        "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.zip.002?download=true",
+        "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.zip.003?download=true",
+        "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.zip.004?download=true",
+        "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.zip.005?download=true",
+        "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.zip.006?download=true",
+        "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.zip.007?download=true",
+        "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.zip.008?download=true",
+        "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.zip.009?download=true",
+        "https://huggingface.co/datasets/Vinz-i/update/resolve/main/The%20Sims%204%20Patch%201.120.140.1020%20from%201.120.117.1030.zip.010?download=true"
+          
+      ],
       "size_mb": 450,
       "optional": false
     }
-  ]
-}
+  ],
     "dlcs": [
         {"code": "EP01", "category": "Packs Extension", "name": "Get to Work", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/EP01/Sims4_DLC_EP01_Get_to_Work.zip"},
         {"code": "EP02", "category": "Packs Extension", "name": "Get Together", "url": "https://github.com/l1ntol/lunia-dlc/releases/download/EP02/Sims4_DLC_EP02_Get_Together.zip"},
